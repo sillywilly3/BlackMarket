@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Classroom</title>
+    <style>
+        .Buttons {
+            display: flex;
+            width: 200px;
+            height: 35px;
+            font-size: larger;
+        }
+        .DIVs {
+            display: block;
+        }
+        .Credentials {
+            display: none;
+        }
+        .Payment {
+            width: 200px;
+            height: 45px;
+        }
+        .Payment button {
+            width: 200;
+            height: 37;
+            font-size: 33px;
+            margin-left: 27px;
+        }
+        #IframeConfirmOrder {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="DIVs">
+        <h1>Welcome to the BAME Black Market</h1>
+        <p>This is a black market that shall be referred to as the BBM to prevent any more attention</p>
+    </div>
+    <br>
+    <br>
+    <div class="DIVs">
+        <button class="Buttons" onclick="Button1()">5 Pechsos | $1.50</button>
+        <button class="Buttons" onclick="Button2()">10 Peschos | $3</button>
+        <button class="Buttons" onclick="Button3()">20 Peschos | $7</button>
+    </div>
+    <div class="Credentials">
+        <h1 id="SayAmount"></h1>
+        <div class="Payment">
+            <input id="Email" type="email" placeholder="Email">
+            <input id="Name" type="text" placeholder="Name">
+            <button id="DoneButton" onclick="DoneButton()">Done</button>
+        </div>
+    </div>
+    <iframe id="IframeConfirmOrder" src="data:text/html, <html><body><h1>Order Received!!!!! </h1></body></html>" width="100%" height="100%" frameborder="0"></iframe>
+    <script>
+        var Amount1 = "$1.50";
+        var Amount2 = "$3";
+        var Amount3 = "$7";
+
+        function Button1() {
+            const divsElements = document.querySelectorAll(".DIVs");
+            const credentials = document.querySelector(".Credentials");
+            const SayAmount = document.getElementById("SayAmount");
+
+            divsElements[0].style.display = "none";
+            divsElements[1].style.display = "none";
+            credentials.style.display = "block";
+            SayAmount.textContent = "Total: " + Amount1;
+        }
+
+        function Button2() {
+            const divsElements = document.querySelectorAll(".DIVs");
+            const credentials = document.querySelector(".Credentials");
+            const SayAmount = document.getElementById("SayAmount");
+
+            divsElements[0].style.display = "none";
+            divsElements[1].style.display = "none";
+            credentials.style.display = "block";
+            SayAmount.textContent = "Total: " + Amount2;
+        }
+
+        function Button3() {
+            const divsElements = document.querySelectorAll(".DIVs");
+            const credentials = document.querySelector(".Credentials");
+            const SayAmount = document.getElementById("SayAmount");
+
+            divsElements[0].style.display = "none";
+            divsElements[1].style.display = "none";
+            credentials.style.display = "block";
+            SayAmount.textContent = "Total: " + Amount3;
+        }
+
+        function DoneButton() {
+            const Email = document.getElementById("Email").value;
+            const Name = document.getElementById("Name").value;
+            const EmailRecive = "williamrklein@gmail.com"
+
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${EmailRecive}&su=New%20Order%20Received&body=A%20new%20order%20has%20been%20received%20from%20${Name}%20(${Email}).`);
+
+            document.getElementById("DoneButton").style.display = "none";
+            document.getElementById("IframeConfirmOrder").style.display = "block";
+        }
+    </script>
+</body>
+</html>
